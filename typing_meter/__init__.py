@@ -1,1 +1,1 @@
-__author__ = "Mithil Poojary"
+__author__ = "Typing Meter group"

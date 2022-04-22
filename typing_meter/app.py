@@ -331,7 +331,6 @@ class App:
         )
         win.addstr(" to tweet result.")
 
-        # Come here you pro.
         my_set = set()
         for index in self.mistyped_keys:
             my_set.add(self.text[index])
