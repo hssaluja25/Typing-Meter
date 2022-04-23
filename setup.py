@@ -1,12 +1,8 @@
 """Setup script for mitype."""
-from setuptools import setup
+from setuptools import setup, find_packages
 
-import versioneer
-
-if __name__ == "__main__":
-    setup(
-        version=versioneer.get_version(),
-        cmdclass=versioneer.get_cmdclass(),
-        download_url="https://github.com/mithil467/mitype/archive/v%s.tar.gz"
-        % versioneer.get_version(),
-    )
+setup(
+    name='example',
+    version='0.1.0',
+    packages=find_packages(include=['typing_meter', 'typing_meter.*'])
+)
