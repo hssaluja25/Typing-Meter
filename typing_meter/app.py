@@ -336,13 +336,28 @@ class App:
             my_set.add(self.text[index])
         win.addstr("\n Characters you mistyped on in the current session: ")
         win.addstr(str(my_set), self.Color.MAGENTA)
-
+        
+        mistyped_keys_in_current_session = []
+        for index in set(self.mistyped_keys):
+            mistyped_keys_in_current_session.append(self.text[index])
+        dictionary = {}
+        for char in set(mistyped_keys_in_current_session):
+            dictionary[char] = mistyped_keys_in_current_session.count(char)
 
         from pprint import pprint as pp
         import json
         with open("user_history.txt","r") as f:
             content = f.read()
             user_history = json.loads(content)
+
+            # Now we will update the "dictionary" and then write the dictionary to the file.
+            for char, count in dictionary.items():
+                if char not in user_history:
+                    user_history[char] = 0
+                user_history[char] += count
+            print(user_history)
+            open("user_history.txt","w").write(json.dumps(user_history))
+
             inv_map = {}
             for k, v in user_history.items():
                 inv_map[v] = inv_map.get(v, []) + [k]
