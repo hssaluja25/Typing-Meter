@@ -344,7 +344,6 @@ class App:
         for char in set(mistyped_keys_in_current_session):
             dictionary[char] = mistyped_keys_in_current_session.count(char)
 
-        from pprint import pprint as pp
         import json
         with open("user_history.txt","r") as f:
             content = f.read()
@@ -355,7 +354,6 @@ class App:
                 if char not in user_history:
                     user_history[char] = 0
                 user_history[char] += count
-            print(user_history)
             open("user_history.txt","w").write(json.dumps(user_history))
 
             inv_map = {}

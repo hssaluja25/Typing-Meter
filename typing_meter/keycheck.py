@@ -105,7 +105,7 @@ def is_enter(key):
     Returns:
         bool: `True` if line feed or `False` otherwise.
     """
-    return
+    return key == "\n"
 
 
 def is_tab(key):
